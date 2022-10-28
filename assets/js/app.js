@@ -9,12 +9,14 @@ const $l = document.querySelector('.location');
 async function displayUser(username) {
   $n.textContent = 'cargando...';
   const response = await fetch(`${usersEndpoint}/${username}`);
+  /* Se declaro data */
+  const data = await response.json();
   //Se le agrego la variable response para que leyera la información
-  console.log(response.data);
+  console.log(data);
   /* Se cambiaron las comillas por los acentos invertidos */
-  $n.textContent = `${response.name}`;
-  $b.textContent = `${response.blog}`;
-  $l.textContent = `${response.location}`;
+  $n.textContent = `${data.name}`;
+  $b.textContent = `${data.blog}`;
+  $l.textContent = `${data.location}`;
 }
 
 function handleError(err) {
